@@ -37,6 +37,7 @@
             font-weight: 500;
             margin-top: 1em;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
         .cta-button:hover {
             background-color: #d35400;
@@ -44,19 +45,24 @@
         .cta-button ul {
             display: none;
             position: absolute;
-            top: 110%;
+            top: 100%;
             left: 0;
             width: 200px;
             background-color: #444;
             list-style: none;
-            padding: 0;
-            margin: 5px 0 0 0;
+            padding: 10px 0;
+            margin: 8px 0 0 0; /* Добавлен небольшой отступ для "зоны комфорта" */
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             z-index: 10;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease; /* Плавная анимация */
         }
         .cta-button:hover ul {
             display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
         .cta-button li {
             padding: 0.8em 1em;
