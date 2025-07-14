@@ -8,6 +8,7 @@
     <title>360ptz.ru - VR-туры и 360°-Панорамы</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
     <style>
         body {
@@ -22,6 +23,16 @@
             color: #fff;
             text-align: center;
             padding: 2em;
+        }
+        header .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+            margin-bottom: 1em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            display: inline-block;
         }
         header p {
             font-size: 1.1em;
@@ -95,13 +106,6 @@
         }
         .section {
             margin-bottom: 40px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         .section h2 {
             font-size: 1.6em;
@@ -121,13 +125,7 @@
             border-radius: 8px;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, opacity 0.5s ease;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        .service-item.visible {
-            opacity: 1;
-            transform: translateY(0);
+            transition: transform 0.2s;
         }
         .service-item:hover {
             transform: translateY(-5px);
@@ -146,6 +144,9 @@
             margin-bottom: 20px;
             border-radius: 8px;
             overflow: hidden;
+        }
+        .panorama img {
+            display: none; /* Скрываем изображение для ленивой загрузки */
         }
         .video-container {
             position: relative;
@@ -178,6 +179,9 @@
             color: #d35400;
         }
         @media (max-width: 600px) {
+            header .logo {
+                font-size: 2em;
+            }
             header p {
                 font-size: 1em;
             }
@@ -198,6 +202,7 @@
 </head>
 <body>
     <header>
+        <h1 class="logo">360ptz.ru</h1>
         <p>VR-туры, 360°-видео и панорамы для вашего бизнеса и личных моментов</p>
         <div class="cta-button">
             Заказать проект
@@ -248,38 +253,49 @@
         </section>
         <section class="section">
             <h2>Наши работы: Панорамы</h2>
-            <div id="panorama1" class="panorama"></div>
-            <div id="panorama2" class="panorama"></div>
+            <div id="panorama1" class="panorama" data-panorama="https://raw.githubusercontent.com/rzn4ik/360ptz/188a7143d7caf6d7b35261bcd2c2ee3d04055bd2/3.jpg"></div>
+            <div id="panorama2" class="panorama" data-panorama="images/panorama2.jpg"></div>
         </section>
         <section class="section">
             <h2>Наши работы: Видео</h2>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/8LaTIlj6jGM" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/ВАШ_ИД_ВИДЕО" allowfullscreen></iframe>
             </div>
             <div class="video-container">
-                <iframe src="https://rutube.ru/video/2e6f3b4c6a8b0d1f2a3b4c6d7e8f9a0b/" allowfullscreen></iframe>
+                <iframe src="https://rutube.ru/video/ВАШ_ИД_ВИДЕО/" allowfullscreen></iframe>
             </div>
         </section>
     </div>
     <footer>
         <p>© 2025 360ptz.ru | Связаться: <a href="mailto:info@360ptz.ru">info@360ptz.ru</a></p>
-        <p><a href="https://wa.me/79114119351">WhatsApp</a> | <a href="http://t.me/dennsc">Telegram</a> | <a href="https://vk.com/rznqq">ВКонтакте</a></p>
     </footer>
     <script>
-        // Pannellum initialization
-        pannellum.viewer('panorama1', {
-            "type": "equirectangular",
-            "panorama": "images/panorama1.jpg",
-            "autoLoad": true,
-            "autoRotate": -2,
-            "showControls": false
-        });
-        pannellum.viewer('panorama2', {
-            "type": "equirectangular",
-            "panorama": "images/panorama2.jpg",
-            "autoLoad": true,
-            "autoRotate": -2,
-            "showControls": false
+        // Lazy-load panorama initialization
+        const panoramas = document.querySelectorAll('.panorama');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const panorama = entry.target;
+                    const image = panorama.getAttribute('data-panorama');
+                    pannellum.viewer(panorama.id, {
+                        "type": "equirectangular",
+                        "panorama": image,
+                        "autoLoad": true,
+                        "autoRotate": -2,
+                        "showControls": true,
+                        "compass": true,
+                        "mouseZoom": true,
+                        "touchZoom": true,
+                        "draggable": true,
+                        "disableKeyboardCtrl": false
+                    });
+                    observer.unobserve(panorama); // Stop observing after initialization
+                }
+            });
+        }, { threshold: 0.1 });
+
+        panoramas.forEach(panorama => {
+            observer.observe(panorama);
         });
 
         // Dropdown menu functionality
@@ -306,20 +322,6 @@
             timeout = setTimeout(() => {
                 ctaButton.classList.remove('active');
             }, 300);
-        });
-
-        // Section animation on scroll
-        const sections = document.querySelectorAll('.section, .service-item');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        sections.forEach(section => {
-            observer.observe(section);
         });
     </script>
 </body>
