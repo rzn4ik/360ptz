@@ -20,16 +20,20 @@
             background-color: #1a1a1a;
             color: #fff;
             text-align: center;
-            padding: 2em;
+            padding: 2em 1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        header h1 {
-            margin: 0;
-            font-size: 2.2em;
-            font-weight: 600;
+        .logo {
+            height: 80px;
+            width: auto;
+            margin-bottom: 15px;
+            object-fit: contain;
         }
         header p {
             font-size: 1.1em;
-            margin: 0.5em 0;
+            margin: 0.5em 0 1.5em;
         }
         .cta-button {
             display: inline-block;
@@ -39,7 +43,7 @@
             text-decoration: none;
             border-radius: 5px;
             font-weight: 500;
-            margin-top: 1em;
+            transition: background-color 0.3s;
         }
         .cta-button:hover {
             background-color: #d35400;
@@ -110,11 +114,13 @@
             font-size: 0.9em;
         }
         @media (max-width: 600px) {
-            header h1 {
-                font-size: 1.6em;
+            .logo {
+                height: 50px;
+                margin-bottom: 10px;
             }
             header p {
                 font-size: 1em;
+                margin-bottom: 1em;
             }
             .section h2 {
                 font-size: 1.3em;
@@ -130,7 +136,9 @@
 </head>
 <body>
     <header>
-        <h1>360ptz.ru</h1>
+        <img src="https://drive.google.com/uc?export=view&id=1M0Ua9oxTmVgZcPrvXjZjqDViCp-p6AQB" 
+             alt="360ptz.ru - VR-туры и 360° панорамы" 
+             class="logo">
         <p>VR-туры, 360°-видео и панорамы для вашего бизнеса и личных моментов</p>
         <a href="mailto:info@360ptz.ru" class="cta-button">Заказать проект</a>
     </header>
