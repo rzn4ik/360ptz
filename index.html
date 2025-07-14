@@ -51,15 +51,15 @@
             background-color: #444;
             list-style: none;
             padding: 10px 0;
-            margin: 8px 0 0 0; /* Добавлен небольшой отступ для "зоны комфорта" */
+            margin: 8px 0 0 0;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             z-index: 10;
             opacity: 0;
             transform: translateY(-10px);
-            transition: opacity 0.3s ease, transform 0.3s ease; /* Плавная анимация */
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
-        .cta-button:hover ul {
+        .cta-button.active ul {
             display: block;
             opacity: 1;
             transform: translateY(0);
@@ -241,6 +241,7 @@
         <p>© 2025 360ptz.ru | Связаться: <a href="mailto:info@360ptz.ru">info@360ptz.ru</a></p>
     </footer>
     <script>
+        // Pannellum initialization
         pannellum.viewer('panorama1', {
             "type": "equirectangular",
             "panorama": "images/panorama1.jpg",
@@ -254,6 +255,33 @@
             "autoLoad": true,
             "autoRotate": -2,
             "showControls": false
+        });
+
+        // Dropdown menu functionality
+        const ctaButton = document.querySelector('.cta-button');
+        let timeout;
+
+        ctaButton.addEventListener('mouseenter', () => {
+            clearTimeout(timeout);
+            ctaButton.classList.add('active');
+        });
+
+        ctaButton.addEventListener('mouseleave', () => {
+            timeout = setTimeout(() => {
+                ctaButton.classList.remove('active');
+            }, 300);
+        });
+
+        // Ensure menu stays open when hovering over the dropdown
+        const dropdown = ctaButton.querySelector('ul');
+        dropdown.addEventListener('mouseenter', () => {
+            clearTimeout(timeout);
+        });
+
+        dropdown.addEventListener('mouseleave', () => {
+            timeout = setTimeout(() => {
+                ctaButton.classList.remove('active');
+            }, 300);
         });
     </script>
 </body>
