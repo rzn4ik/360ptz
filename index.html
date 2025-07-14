@@ -1,218 +1,29 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VR-туры, 360°-видео и панорамы для бизнеса и частных клиентов на 360ptz.ru">
-    <meta name="keywords" content="360 панорамы, VR-туры, 360 видео, Love Story, виртуальные экскурсии">
-    <title>360ptz.ru - VR-туры и 360°-Панорамы</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
-    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <!-- ... (остальные метатеги и скрипты остаются без изменений) ... -->
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-            color: #333;
-        }
-        header {
-            background-color: #1a1a1a;
-            color: #fff;
-            text-align: center;
-            padding: 2em 1em;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        /* ... (остальные стили без изменений) ... */
         .logo {
             height: 80px;
             width: auto;
             margin-bottom: 15px;
             object-fit: contain;
         }
-        header p {
-            font-size: 1.1em;
-            margin: 0.5em 0 1.5em;
-        }
-        .cta-button {
-            display: inline-block;
-            background-color: #e67e22;
-            color: #fff;
-            padding: 0.8em 1.5em;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-        .cta-button:hover {
-            background-color: #d35400;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .section {
-            margin-bottom: 40px;
-        }
-        .section h2 {
-            font-size: 1.6em;
-            font-weight: 500;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .service-item {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-        }
-        .service-item:hover {
-            transform: translateY(-5px);
-        }
-        .service-item h3 {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-        .panorama {
-            width: 100%;
-            height: 400px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            margin-bottom: 20px;
-            border-radius: 8px;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        footer {
-            background-color: #1a1a1a;
-            color: #fff;
-            text-align: center;
-            padding: 1em;
-            font-size: 0.9em;
-        }
         @media (max-width: 600px) {
             .logo {
                 height: 50px;
-                margin-bottom: 10px;
-            }
-            header p {
-                font-size: 1em;
-                margin-bottom: 1em;
-            }
-            .section h2 {
-                font-size: 1.3em;
-            }
-            .panorama {
-                height: 300px;
-            }
-            .services {
-                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="https://drive.google.com/uc?export=view&id=1M0Ua9oxTmVgZcPrvXjZjqDViCp-p6AQB" 
+        <img src="https://i.ibb.co/0jQ3Y7W/360ptz-logo.png" 
              alt="360ptz.ru - VR-туры и 360° панорамы" 
              class="logo">
-        <p>VR-туры, 360°-видео и панорамы для вашего бизнеса и личных моментов</p>
-        <a href="mailto:info@360ptz.ru" class="cta-button">Заказать проект</a>
+        <!-- ... (остальной контент без изменений) ... -->
     </header>
-    <div class="container">
-        <section class="section">
-            <h2>Что мы предлагаем</h2>
-            <div class="services">
-                <div class="service-item">
-                    <h3>VR-туры</h3>
-                    <p>Виртуальные экскурсии для недвижимости, отелей и музеев.</p>
-                </div>
-                <div class="service-item">
-                    <h3>360°-видео</h3>
-                    <p>Рекламные ролики и обзоры мероприятий.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Обучающие видео</h3>
-                    <p>Интерактивные уроки в формате 360°.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Love Story</h3>
-                    <p>Романтические панорамы для свадеб и свиданий.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Виртуальные экскурсии</h3>
-                    <p>Туристические туры и обзоры природных мест.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Съемка мероприятий</h3>
-                    <p>Панорамы и видео концертов и фестивалей.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Реклама бизнеса</h3>
-                    <p>Виртуальные туры для магазинов и салонов.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Корпоративные туры</h3>
-                    <p>Презентации офисов и производственных площадок.</p>
-                </div>
-            </div>
-        </section>
-        <section class="section">
-            <h2>Наши работы: Панорамы</h2>
-            <div id="panorama1" class="panorama"></div>
-            <div id="panorama2" class="panorama"></div>
-        </section>
-        <section class="section">
-            <h2>Наши работы: Видео</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/ВАШ_ИД_ВИДЕО" allowfullscreen></iframe>
-            </div>
-            <div class="video-container">
-                <iframe src="https://rutube.ru/video/ВАШ_ИД_ВИДЕО/" allowfullscreen></iframe>
-            </div>
-        </section>
-    </div>
-    <footer>
-        <p>© 2025 360ptz.ru | Связаться: <a href="mailto:info@360ptz.ru" style="color: #e67e22;">info@360ptz.ru</a></p>
-    </footer>
-    <script>
-        pannellum.viewer('panorama1', {
-            "type": "equirectangular",
-            "panorama": "images/panorama1.jpg",
-            "autoLoad": true,
-            "autoRotate": -2,
-            "showControls": false
-        });
-        pannellum.viewer('panorama2', {
-            "type": "equirectangular",
-            "panorama": "images/panorama2.jpg",
-            "autoLoad": true,
-            "autoRotate": -2,
-            "showControls": false
-        });
-    </script>
+    <!-- ... (остальная часть кода без изменений) ... -->
 </body>
 </html>
