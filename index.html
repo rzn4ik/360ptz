@@ -44,22 +44,24 @@
         .cta-button ul {
             display: none;
             position: absolute;
-            top: 100%;
+            top: 110%;
             left: 0;
-            background-color: #333;
+            width: 200px;
+            background-color: #444;
             list-style: none;
             padding: 0;
-            margin: 0;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin: 5px 0 0 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             z-index: 10;
         }
         .cta-button:hover ul {
             display: block;
         }
         .cta-button li {
-            padding: 0.5em 1em;
-            white-space: nowrap;
+            padding: 0.8em 1em;
+            text-align: center;
+            transition: background-color 0.3s ease;
         }
         .cta-button li a {
             color: #fff;
@@ -157,6 +159,9 @@
             }
             .services {
                 grid-template-columns: 1fr;
+            }
+            .cta-button ul {
+                width: 180px;
             }
         }
     </style>
