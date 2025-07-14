@@ -20,21 +20,17 @@
             background-color: #1a1a1a;
             color: #fff;
             text-align: center;
-            padding: 2em 1em;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 2em;
         }
-        .logo {
-            height: 100px;
-            width: auto;
-            margin-bottom: 15px;
-            object-fit: contain;
+        header img.logo {
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
         }
         header p {
             font-size: 1.1em;
-            margin: 0.5em 0 1.5em;
-            max-width: 600px;
+            margin: 0.5em 0;
         }
         .cta-button {
             display: inline-block;
@@ -44,7 +40,7 @@
             text-decoration: none;
             border-radius: 5px;
             font-weight: 500;
-            transition: background-color 0.3s;
+            margin-top: 1em;
         }
         .cta-button:hover {
             background-color: #d35400;
@@ -115,13 +111,11 @@
             font-size: 0.9em;
         }
         @media (max-width: 600px) {
-            .logo {
-                height: 70px;
-                margin-bottom: 10px;
+            header img.logo {
+                max-width: 150px;
             }
             header p {
                 font-size: 1em;
-                margin-bottom: 1em;
             }
             .section h2 {
                 font-size: 1.3em;
@@ -137,9 +131,7 @@
 </head>
 <body>
     <header>
-        <img src="https://i.ibb.co/6cfGp9p/360ptz-logo.png" 
-             alt="360ptz.ru - VR-туры и 360° панорамы" 
-             class="logo">
+        <img src="https://raw.githubusercontent.com/rzn4ik/360ptz/97b0a7f7c5daf2513d5592da98430e4be989b8e8/ChatGPT%20Image%2014%20%D0%B8%D1%8E%D0%BB.%202025%20%D03.%2C%2011_09_28.png" alt="360ptz.ru Logo" class="logo">
         <p>VR-туры, 360°-видео и панорамы для вашего бизнеса и личных моментов</p>
         <a href="mailto:info@360ptz.ru" class="cta-button">Заказать проект</a>
     </header>
@@ -193,7 +185,7 @@
             </div>
             <div class="video-container">
                 <iframe src="https://rutube.ru/video/ВАШ_ИД_ВИДЕО/" allowfullscreen></iframe>
-            </div>
+            sincer
         </section>
     </div>
     <footer>
