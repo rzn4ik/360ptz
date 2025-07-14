@@ -22,17 +22,12 @@
             text-align: center;
             padding: 2em;
         }
-        header img.logo {
-            max-width: 300px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
         header p {
             font-size: 1.1em;
             margin: 0.5em 0;
         }
         .cta-button {
+            position: relative;
             display: inline-block;
             background-color: #e67e22;
             color: #fff;
@@ -41,9 +36,38 @@
             border-radius: 5px;
             font-weight: 500;
             margin-top: 1em;
+            cursor: pointer;
         }
         .cta-button:hover {
             background-color: #d35400;
+        }
+        .cta-button ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        .cta-button:hover ul {
+            display: block;
+        }
+        .cta-button li {
+            padding: 0.5em 1em;
+            white-space: nowrap;
+        }
+        .cta-button li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        .cta-button li:hover {
+            background-color: #e67e22;
         }
         .container {
             max-width: 1000px;
@@ -122,9 +146,6 @@
             color: #d35400;
         }
         @media (max-width: 600px) {
-            header img.logo {
-                max-width: 200px;
-            }
             header p {
                 font-size: 1em;
             }
@@ -142,9 +163,15 @@
 </head>
 <body>
     <header>
-        <img src="https://github.com/rzn4ik/360ptz/blob/main/2.png?raw=true" alt="360ptz.ru Logo" class="logo">
         <p>VR-туры, 360°-видео и панорамы для вашего бизнеса и личных моментов</p>
-        <a href="mailto:info@360ptz.ru" class="cta-button">Заказать проект</a>
+        <div class="cta-button">
+            Заказать проект
+            <ul>
+                <li><a href="https://wa.me/ВАШ_НОМЕР">Написать в WhatsApp</a></li>
+                <li><a href="https://t.me/ВАШ_НИК">Написать в Telegram</a></li>
+                <li><a href="https://vk.com/im?sel=ВАШ_ID">Написать в ВКонтакте</a></li>
+            </ul>
+        </div>
     </header>
     <div class="container">
         <section class="section">
