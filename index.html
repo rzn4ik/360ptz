@@ -144,9 +144,32 @@
             margin-bottom: 20px;
             border-radius: 8px;
             overflow: hidden;
+            position: relative;
         }
         .panorama img {
             display: none; /* Скрываем изображение для ленивой загрузки */
+        }
+        /* Скрываем стандартный индикатор загрузки Pannellum */
+        .pnlm-load-box {
+            display: none !important;
+        }
+        /* Стили для кастомного спиннера */
+        .panorama .spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e67e22;
+            border-top: 4px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            z-index: 10;
+        }
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
         .video-container {
             position: relative;
@@ -253,8 +276,12 @@
         </section>
         <section class="section">
             <h2>Наши работы: Панорамы</h2>
-            <div id="panorama1" class="panorama" data-panorama="https://raw.githubusercontent.com/rzn4ik/360ptz/bfef501ff6f968f6cf2783506e7d7b5e6ce18793/4.jpg"></div>
-            <div id="panorama2" class="panorama" data-panorama="images/panorama2.jpg"></div>
+            <div id="panorama1" class="panorama" data-panorama="https://raw.githubusercontent.com/rzn4ik/360ptz/bfef501ff6f968f6cf2783506e7d7b5e6ce18793/4.jpg">
+                <div class="spinner"></div>
+            </div>
+            <div id="panorama2" class="panorama" data-panorama="images/panorama2.jpg">
+                <div class="spinner"></div>
+            </div>
         </section>
         <section class="section">
             <h2>Наши работы: Видео</h2>
@@ -277,7 +304,9 @@
                 if (entry.isIntersecting) {
                     const panorama = entry.target;
                     const image = panorama.getAttribute('data-panorama');
-                    pannellum.viewer(panorama.id, {
+                    const spinner = panorama.querySelector('.spinner');
+                    spinner.style.display = 'block'; // Показываем спиннер
+                    const viewer = pannellum.viewer(panorama.id, {
                         "type": "equirectangular",
                         "panorama": image,
                         "autoLoad": true,
@@ -289,7 +318,10 @@
                         "draggable": true,
                         "disableKeyboardCtrl": false
                     });
-                    observer.unobserve(panorama); // Stop observing after initialization
+                    viewer.on('load', () => {
+                        spinner.style.display = 'none'; // Скрываем спиннер после загрузки
+                    });
+                    observer.unobserve(panorama); // Останавливаем наблюдение после инициализации
                 }
             });
         }, { threshold: 0.1 });
